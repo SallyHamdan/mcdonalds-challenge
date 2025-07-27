@@ -93,7 +93,6 @@
           : this.branchesData;
 
         const uniqueCities = [...new Set(filtered.map(b => b.city))];
-        console.log(uniqueCities)
         return uniqueCities;
       }
     },
