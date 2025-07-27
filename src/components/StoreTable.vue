@@ -89,11 +89,13 @@
       },
       filteredCities() {
         const filtered = this.selectedRegion
-          ? this.branchesData.filter(b => b.store_region === this.selectedRegion)
+          ? this.branchesData.filter(branch => branch.store_region === this.selectedRegion)
           : this.branchesData;
 
-        const uniqueCities = [...new Set(filtered.map(b => b.city))];
-        return uniqueCities;
+        const uniqueCities = [...new Set(filtered.map(c => c.city.trim()))];
+        return uniqueCities.sort((a, b) =>
+            a.localeCompare(b, 'he', { sensitivity: 'base' })
+        );
       }
     },
     mounted() {
